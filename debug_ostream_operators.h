@@ -55,7 +55,7 @@ inline std::ostream& operator<<(std::ostream& os, decoration_layout_action_t act
   return os << to_string(action);
 }
 
-inline std::ostream& operator<<(std::ostream& os, decoration_layout_t::action_response_t const& action_response)
+inline std::ostream& operator<<(std::ostream& os, pixdecor_layout_t::action_response_t const& action_response)
 {
   os << '{';
   os << "action:" << action_response.action <<
