@@ -12,5 +12,6 @@
 #ifdef CWDEBUG
 NAMESPACE_DEBUG_CHANNELS_START
 extern channel_ct pixdecor;
+extern channel_ct ipc;
 NAMESPACE_DEBUG_CHANNELS_END
 #endif
