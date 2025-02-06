@@ -3,18 +3,15 @@
 libcwd_r_deps = dependency('libcwd_r', required: true)
 extra_deps = libcwd_r_deps.partial_dependency(compile_args : true, includes : true)
 
+# cwds is a cmake project.
+cmake = import('cmake')
+opt_var = cmake.subproject_options()
+opt_var.add_cmake_defines({'CMAKE_BUILD_TYPE': 'Debug'})
+opt_var.add_cmake_defines({'CMAKE_VERBOSE_MAKEFILE': true})
+aicxx_proj = cmake.subproject('aicxx', options: opt_var)
+
 if meson.project_name() == 'wayfire'
   # This block only runs if the parent project is wayfire (not for the plugins).
-
-  # cwds is a cmake project.
-  cmake = import('cmake')
-  aicxx_proj = cmake.subproject('aicxx',
-    cmake_options: [
-      '-DCMAKE_BUILD_TYPE=Debug',
-      '-GNinja',
-      '-DCMAKE_VERBOSE_MAKEFILE=ON'
-      ])
-
   extra_deps = [
     libcwd_r_deps,
     dependency('libelf'),
@@ -23,11 +20,13 @@ if meson.project_name() == 'wayfire'
   ]
 endif
 
+# Extract the dependencies from aicxx_proj.
+aicxx_deps = aicxx_proj.dependency('aicxx_headers')
+
 # Declare the final dependency that combines everything.
 aicxx = declare_dependency(
-  include_directories: '.',         # Needed for -include 'sys.h' and #include "debug.h".
   compile_args: ['-include', 'sys.h'],
-  dependencies: extra_deps
+  dependencies: [aicxx_deps, extra_deps]
 )
 
 # Targets of the main project (plugins or wayfire), then must use

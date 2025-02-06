@@ -22,3 +22,9 @@ target_compile_definitions(cwds_ObjLib
     "NAMESPACE_DEBUG_START=namespace wf::debug {"
     "NAMESPACE_DEBUG_END=}"
 )
+
+# Specify the interface for this 'aicxx_wrapper' "project".
+add_library(aicxx_headers INTERFACE)
+target_include_directories(aicxx_headers INTERFACE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
