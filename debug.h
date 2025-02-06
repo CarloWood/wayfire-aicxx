@@ -2,8 +2,8 @@
 
 #pragma once
 
-#define NAMESPACE_DEBUG wf::pixdecor::debug
-#define NAMESPACE_DEBUG_START namespace wf::pixdecor::debug {
+#define NAMESPACE_DEBUG wf::debug
+#define NAMESPACE_DEBUG_START namespace wf::debug {
 #define NAMESPACE_DEBUG_END }
 
 #include "cwds/debug.h"
