@@ -1,5 +1,4 @@
 #include "cwds/debug_ostream_operators.h"
-#include "aicxx/debug_ostream_operators.h"
 
 #define AI_CASE_RETURN(x) do { case x: return #x; } while(0)
 
@@ -30,3 +29,6 @@ inline std::ostream& operator<<(std::ostream& os, wlr_pointer_button_event const
   os << '}';
   return os;
 }
+
+// Plugin specific debug ostream operators should go here.
+#include "../../aicxx/debug_ostream_operators.h"
