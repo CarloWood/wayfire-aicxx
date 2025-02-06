@@ -18,7 +18,7 @@ set_property(TARGET cwds_ObjLib PROPERTY POSITION_INDEPENDENT_CODE ON)
 # Put `init()` and `init_thread()` in the right namespace.
 target_compile_definitions(cwds_ObjLib
   PUBLIC
-    "NAMESPACE_DEBUG=wf::pixdecor::debug"
-    "NAMESPACE_DEBUG_START=namespace wf::pixdecor::debug {"
+    "NAMESPACE_DEBUG=wf::debug"
+    "NAMESPACE_DEBUG_START=namespace wf::debug {"
     "NAMESPACE_DEBUG_END=}"
 )
